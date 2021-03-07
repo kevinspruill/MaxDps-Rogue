@@ -14,7 +14,7 @@ local Rogue = addonTable.Rogue;
 
 local SB = {
 	DeeperStratagem      	= 193531,
-	ShadowFocus		= 108209
+	ShadowFocus		= 108209,
 	
 	Shadowstrike		= 185438,
 	Stealth			= 1784,
@@ -28,7 +28,7 @@ local SB = {
 	ShurikenStorm		= 197835,
 	MarkedForDeath		= 137619,
 	Vanish               	= 1856,
-	BlackPowder		= 319175
+	BlackPowder		= 319175,
 	
 	-- Covenant Abilities
 	Sepsis               = 328305,
@@ -67,6 +67,8 @@ function Rogue:SubtletySingle()
 	local cooldown = fd.cooldown;
 	local buff = fd.buff;
 	local debuff = fd.debuff;
+	local covenantId = fd.covenant.covenantId;
+	local conduit = fd.covenant.soulbindConduits;
 	local currentSpell = fd.currentSpell;
 	local talents = fd.talents;
 	local targets = MaxDps:SmartAoe();
@@ -117,7 +119,7 @@ function Rogue:SubtletySingle()
 		return SB.Shadowstrike;
 	end
 	
-	if comboPointsDeficit >= 1 and covenantId == Enum.CovenantType.NightFae and cooldown[SB.Sepsis].ready then
+	if comboDeficit >= 1 and covenantId == Enum.CovenantType.NightFae and cooldown[SB.Sepsis].ready then
 		return SB.Sepsis;
 	end	
 	
